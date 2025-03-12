@@ -5,14 +5,20 @@ from sqlmodel.ext.asyncio.session import AsyncSession
 from src.books.service import BookService
 from .schemas import Book, BookCreateModel, BookUpdateModel
 from src.db.main import get_db_session
+from src.users.dependency import AccessTokenBearer
 
 
 book_router = APIRouter()
 book_service = BookService()
+access_token_bearer = AccessTokenBearer()
 
 
 @book_router.get("/", response_model=List[Book])
-async def get_all_books(session: AsyncSession = Depends(get_db_session)):
+async def get_all_books(
+    session: AsyncSession = Depends(get_db_session),
+    user_details=Depends(access_token_bearer),
+):
+    print(user_details)
     books = await book_service.get_all_books(session)
     return books
 
@@ -21,6 +27,7 @@ async def get_all_books(session: AsyncSession = Depends(get_db_session)):
 async def create_book(
     book: BookCreateModel,
     session: AsyncSession = Depends(get_db_session),
+    user_details=Depends(access_token_bearer),
 ):
     new_book = await book_service.create_book(book, session)
     return new_book
@@ -30,6 +37,7 @@ async def create_book(
 async def get_book(
     book_uid: str,
     session: AsyncSession = Depends(get_db_session),
+    user_details=Depends(access_token_bearer),
 ):
     book = await book_service.get_book(book_uid, session)
 
@@ -44,6 +52,7 @@ async def update_book(
     book_uid: str,
     updatedBook: BookUpdateModel,
     session: AsyncSession = Depends(get_db_session),
+    user_details=Depends(access_token_bearer),
 ):
     book = await book_service.update_book(book_uid, updatedBook, session)
 
@@ -54,7 +63,11 @@ async def update_book(
 
 
 @book_router.delete("/{book_uid}", status_code=status.HTTP_204_NO_CONTENT)
-async def delete_book(book_uid: str, session: AsyncSession = Depends(get_db_session)):
+async def delete_book(
+    book_uid: str,
+    session: AsyncSession = Depends(get_db_session),
+    user_details=Depends(access_token_bearer),
+):
     book = await book_service.delete_book(book_uid, session)
 
     if book is None:

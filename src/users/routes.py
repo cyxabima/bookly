@@ -4,11 +4,11 @@ from datetime import datetime
 from fastapi import APIRouter, Depends, HTTPException, status
 from src.db.redis import add_jti_to_block_list
 from src.users.service import UserService
-from .schemas import UserCreateModel, UserLoginModel
+from .schemas import User, UserCreateModel, UserLoginModel
 from sqlmodel.ext.asyncio.session import AsyncSession
 from src.db.main import get_db_session
 from . import utils
-from .dependency import AccessTokenBearer, RefreshTokenBearer
+from .dependency import AccessTokenBearer, RefreshTokenBearer, get_logged_user
 
 
 auth_router = APIRouter()
@@ -67,6 +67,11 @@ async def get_new_access_token(
 
     return {"content": {"access_token": new_access_token}}
     # or we could return
+
+
+@auth_router.get("/me")
+async def get_user_details(user_details: User = Depends(get_logged_user)):
+    return user_details
 
 
 @auth_router.get("/logout")

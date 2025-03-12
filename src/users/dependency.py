@@ -1,8 +1,13 @@
 # alternative to oauth2PasswordBearer and it is general
-from fastapi import HTTPException, Request, status
+from fastapi import Depends, HTTPException, Request, status
 from fastapi.security import HTTPBearer
 from src.db.redis import token_in_block_list
 from src.users.utils import decode_token
+from sqlmodel.ext.asyncio.session import AsyncSession
+from src.db.main import get_db_session
+from .service import UserService
+
+user_service = UserService()
 
 
 class TokenBearer(HTTPBearer):
@@ -64,3 +69,12 @@ class RefreshTokenBearer(TokenBearer):
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail="Refresh Token is required",
             )
+
+
+async def get_logged_user(
+    token_data: dict = Depends(AccessTokenBearer()),
+    session: AsyncSession = Depends(get_db_session),
+):
+    email = token_data["user"]["email"]
+    user = await user_service.get_user_by_email(email, session)
+    return user

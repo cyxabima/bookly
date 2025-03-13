@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlmodel.ext.asyncio.session import AsyncSession
 from src import myTyping
 from src.books.service import BookService
-from .schemas import Book, BookCreateModel, BookUpdateModel
+from .schemas import Book, BookCreateModel, BookDetailsModel, BookUpdateModel
 from src.db.main import get_db_session
 from src.users.dependency import AccessTokenBearer, RoleChecker
 
@@ -41,7 +41,9 @@ async def create_book(
     return new_book
 
 
-@book_router.get("/{book_uid}", response_model=Book, dependencies=[role_checker])
+@book_router.get(
+    "/{book_uid}", response_model=BookDetailsModel, dependencies=[role_checker]
+)
 async def get_book(
     book_uid: str,
     session: AsyncSession = Depends(get_db_session),

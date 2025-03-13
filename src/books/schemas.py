@@ -1,6 +1,9 @@
 from datetime import date, datetime
+from typing import List
 from pydantic import BaseModel
 import uuid
+
+from src.db.models import Review
 
 
 class Book(BaseModel):
@@ -14,6 +17,11 @@ class Book(BaseModel):
     language: str
     created_at: datetime
     updated_at: datetime
+
+
+class BookDetailsModel(Book):
+    reviews: List[Review]
+    # here Review is sqlModel if it was sqlAlChemy we have to Schema with class config from_attribute  True
 
 
 class BookCreateModel(BaseModel):

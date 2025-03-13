@@ -16,7 +16,10 @@ async def life_span(app: FastAPI):
 
 version = "v1"
 app = FastAPI(
-    version=version, description="REST Api for Book review Service", lifespan=life_span
+    title="Bookly",
+    version=version,
+    description="REST Api for Book review Service",
+    lifespan=life_span,
 )
 
 app.include_router(book_router, prefix=f"/api/{version}/books", tags=["BOOKS"])

@@ -7,15 +7,19 @@ from sqlalchemy.ext.asyncio import async_engine_from_config
 
 
 from alembic import context
-from src.books.models import Book
-from src.users.models import User
+from src.db.models import Book
+from src.db.models import User
 from sqlmodel import SQLModel
 from src.config import Config
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
-config.set_main_option("sqlalchemy.url", Config.database_uri)
+# config.set_main_option("sqlalchemy.url", Config.database_uri)
+config.set_main_option(
+    "sqlalchemy.url",
+    "postgresql+asyncpg://postgres:123Ukasha%%40@localhost:5432/bookly",
+)
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
 if config.config_file_name is not None:

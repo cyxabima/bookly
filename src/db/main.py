@@ -18,12 +18,12 @@ async def init_db():
         # print(result.all())
 
         # explicitly it need to import where SQL MODEL
-        from src.books.models import Book
+        from src.db.models import Book
 
         await conn.run_sync(SQLModel.metadata.create_all)
 
 
-async def get_db_session() -> AsyncSession: # linter fault
+async def get_db_session() -> AsyncSession:  # linter fault
     Session = async_sessionmaker(
         bind=engine, class_=AsyncSession, expire_on_commit=False
     )

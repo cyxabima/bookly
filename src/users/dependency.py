@@ -1,7 +1,9 @@
 # alternative to oauth2PasswordBearer and it is general
+from typing import List
 from fastapi import Depends, HTTPException, Request, status
 from fastapi.security import HTTPBearer
 from src.db.redis import token_in_block_list
+from src.db.models import User
 from src.users.utils import decode_token
 from sqlmodel.ext.asyncio.session import AsyncSession
 from src.db.main import get_db_session
@@ -78,3 +80,17 @@ async def get_logged_user(
     email = token_data["user"]["email"]
     user = await user_service.get_user_by_email(email, session)
     return user
+
+
+class RoleChecker:
+    def __init__(self, allowed_roles: List[str]) -> None:
+        self.allowed_roles = allowed_roles
+
+    def __call__(self, current_user: User = Depends(get_logged_user)) -> bool:
+        if current_user.role not in self.allowed_roles:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="You are not allowed to access this resource ",
+            )
+
+        return True

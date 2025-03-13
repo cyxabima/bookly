@@ -3,7 +3,7 @@ from sqlmodel.ext.asyncio.session import AsyncSession
 from sqlmodel import select
 from . import utils
 
-from src.users.models import User
+from src.db.models import User
 from src.users.schemas import UserCreateModel, UserLoginModel
 
 

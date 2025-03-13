@@ -4,7 +4,7 @@ from datetime import datetime
 from fastapi import APIRouter, Depends, HTTPException, status
 from src.db.redis import add_jti_to_block_list
 from src.users.service import UserService
-from .schemas import User, UserCreateModel, UserLoginModel
+from .schemas import User, UserCreateModel, UserLoginModel, UserWithBooksModel
 from sqlmodel.ext.asyncio.session import AsyncSession
 from src.db.main import get_db_session
 from . import utils
@@ -15,7 +15,7 @@ auth_router = APIRouter()
 user_service = UserService()
 
 
-@auth_router.post("/signup", status_code=status.HTTP_201_CREATED)
+@auth_router.post("/signup", status_code=status.HTTP_201_CREATED, response_model=User)
 async def create_user(
     user_data: UserCreateModel, session: AsyncSession = Depends(get_db_session)
 ):
@@ -69,7 +69,7 @@ async def get_new_access_token(
     # or we could return
 
 
-@auth_router.get("/me")
+@auth_router.get("/me", response_model=UserWithBooksModel)
 async def get_user_details(user_details: User = Depends(get_logged_user)):
     return user_details
 
@@ -81,3 +81,11 @@ async def logout(token_details: dict = Depends(AccessTokenBearer())):
     await add_jti_to_block_list(jti)
 
     return {"message": "User logout Successfully"}
+
+
+@auth_router.get("/{email}")
+async def get_user_by_email(
+    email: str, session: AsyncSession = Depends(get_db_session)
+):
+    user = await user_service.get_user_by_email(email, session)
+    return user

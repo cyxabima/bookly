@@ -5,6 +5,7 @@ import uuid
 
 class Book(BaseModel):
     uid: uuid.UUID
+    user_uid: uuid.UUID | None
     title: str
     author: str
     publisher: str

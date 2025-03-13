@@ -1,6 +1,7 @@
+import uuid
 from sqlmodel import desc, select
 from sqlmodel.ext.asyncio.session import AsyncSession
-from .models import Book
+from src.db.models import Book
 from .schemas import BookUpdateModel, BookCreateModel
 
 
@@ -20,9 +21,12 @@ class BookService:
 
         return book
 
-    async def create_book(self, book_data: BookCreateModel, session: AsyncSession):
+    async def create_book(
+        self, book_data: BookCreateModel, user_uid: uuid.UUID, session: AsyncSession
+    ):
         book_data_dict = book_data.model_dump()
         new_book = Book(**book_data_dict)
+        new_book.user_uid = user_uid
         session.add(new_book)
         await session.commit()
         return new_book

@@ -6,7 +6,7 @@ from sqlmodel import SQLModel, create_engine
 engine = AsyncEngine(
     create_engine(
         url=Config.database_uri,
-        echo=True,
+        # echo=True,
     )
 )
 

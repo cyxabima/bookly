@@ -1,7 +1,7 @@
 # from fastapi import
 
 from datetime import datetime
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, status
 from src.db.redis import add_jti_to_block_list
 from src.users.service import UserService
 from .schemas import User, UserCreateModel, UserLoginModel, UserWithBooksModel
@@ -9,6 +9,7 @@ from sqlmodel.ext.asyncio.session import AsyncSession
 from src.db.main import get_db_session
 from . import utils
 from .dependency import AccessTokenBearer, RefreshTokenBearer, get_logged_user
+from src.errors import InvalidCredentials, InvalidToken, UserAlreadyExits, UserNotFound
 
 
 auth_router = APIRouter()
@@ -22,9 +23,7 @@ async def create_user(
     user_exist = await user_service.user_exits(user_data.email, session)
 
     if user_exist:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN, detail="User already exits"
-        )
+        raise UserAlreadyExits()
 
     new_user = await user_service.create_user(user_data, session)
 
@@ -38,17 +37,10 @@ async def login_user(
     data = await user_service.login_user(login_data, session)
 
     if data == -1:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="User With this email does not exit",
-        )
+        raise UserNotFound()
 
     if not data:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid Credentials",
-        )
-
+        raise InvalidCredentials()
     return data
 
 
@@ -60,9 +52,7 @@ async def get_new_access_token(
 
     expiry_time_stamp = token_details["exp"]
     if not datetime.fromtimestamp(expiry_time_stamp) > datetime.now():
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid or expire Token"
-        )
+        raise InvalidToken()
     new_access_token = utils.generateAccessToken(user_data=token_details["user"])
 
     return {"content": {"access_token": new_access_token}}

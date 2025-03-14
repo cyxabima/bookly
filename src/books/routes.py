@@ -1,8 +1,9 @@
 from typing import List
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, status
 from sqlmodel.ext.asyncio.session import AsyncSession
 from src import myTyping
 from src.books.service import BookService
+from src.errors import BookNotFound
 from .schemas import Book, BookCreateModel, BookDetailsModel, BookUpdateModel
 from src.db.main import get_db_session
 from src.users.dependency import AccessTokenBearer, RoleChecker
@@ -52,7 +53,7 @@ async def get_book(
     book = await book_service.get_book(book_uid, session)
 
     if book is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
+        raise BookNotFound()
 
     return book
 
@@ -67,7 +68,7 @@ async def update_book(
     book = await book_service.update_book(book_uid, updatedBook, session)
 
     if book is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
+        raise BookNotFound()
 
     return book
 
@@ -83,6 +84,6 @@ async def delete_book(
     book = await book_service.delete_book(book_uid, session)
 
     if book is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
+        raise BookNotFound()
 
     return book

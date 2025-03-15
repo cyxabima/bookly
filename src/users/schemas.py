@@ -33,3 +33,16 @@ class UserLoginModel(BaseModel):
     user_name: str = Field(max_length=12)
     email: str = Field(max_length=42)
     password: str = Field(min_length=6)
+
+
+class EmailModel(BaseModel):
+    address: List[str]
+
+
+class ResetPasswordEmailModel(BaseModel):
+    email: str
+
+
+class ResetPasswordModel(BaseModel):
+    new_password: str
+    confirm_password: str

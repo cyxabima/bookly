@@ -67,3 +67,11 @@ class UserService:
                 "refresh_token": refresh_token,
             }
         }
+
+    async def update_user(self, user: User, data: dict, session: AsyncSession):
+
+        for key, value in data.items():
+            setattr(user, key, value)
+
+        await session.commit()
+        return user

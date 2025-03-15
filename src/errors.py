@@ -78,7 +78,11 @@ class TagNotFound(BooklyException):
     pass
 
 
-class TagAlreadyExits(BooklyException):
+class TagAlreadyExists(BooklyException):
+    pass
+
+
+class NotVerifiedUser(BooklyException):
     pass
 
 
@@ -217,13 +221,25 @@ def register_all_error(app: FastAPI):
     )
 
     app.add_exception_handler(
-        TagAlreadyExits,
+        TagAlreadyExists,
         create_exception_handler(
             status_code=status.HTTP_409_CONFLICT,
             initial_details={
                 "message": "Tag already exists",
                 "resolution": "Try using a different tag name",
                 "error_code": "TAG_ALREADY_EXISTS",
+            },
+        ),
+    )
+
+    app.add_exception_handler(
+        NotVerifiedUser,
+        create_exception_handler(
+            status_code=status.HTTP_403_FORBIDDEN,
+            initial_details={
+                "message": "User is not verified",
+                "resolution": "check your email to verify yourself",
+                "error_code": "USER_NOT_VERIFIED",
             },
         ),
     )

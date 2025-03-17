@@ -3,7 +3,7 @@ from typing import List
 from pydantic import BaseModel
 import uuid
 
-from src.db.models import Review
+from src.db.models import Review, Tag
 
 
 class Book(BaseModel):
@@ -21,6 +21,7 @@ class Book(BaseModel):
 
 class BookDetailsModel(Book):
     reviews: List[Review]
+    tags: List[Tag]
     # here Review is sqlModel if it was sqlAlChemy we have to Schema with class config from_attribute  True
 
 

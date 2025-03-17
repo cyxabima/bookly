@@ -44,7 +44,7 @@ class TagService:
 
             tag = result.one_or_none()
             if not tag:
-                tag = Tag(name=tag_item.name)
+                tag = Tag(**tag_data.model_dump())
 
             book.tags.append(tag)
 
@@ -73,7 +73,7 @@ class TagService:
 
         if tag:
             raise TagAlreadyExists()
-        new_tag = Tag(name=tag_data.name)
+        new_tag = Tag(**tag_data.model_dump())
 
         session.add(new_tag)
 

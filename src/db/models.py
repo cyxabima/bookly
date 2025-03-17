@@ -7,8 +7,8 @@ from typing import List
 
 
 class BookTag(SQLModel, table=True):
-    book_id: uuid.UUID = Field(default=None, foreign_key="books.uid", primary_key=True)
-    tag_id: uuid.UUID = Field(default=None, foreign_key="tags.uid", primary_key=True)
+    book_id: uuid.UUID = Field(default=None, foreign_key="book.uid", primary_key=True)
+    tag_id: uuid.UUID = Field(default=None, foreign_key="tag.uid", primary_key=True)
 
 
 class Tag(SQLModel, table=True):

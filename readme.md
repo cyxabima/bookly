@@ -94,7 +94,44 @@ Once the server is running, the API docs can be accessed at:
 This project is licensed under the MIT License. [(view)](license.md)
 
 
-
+## 📂 Project Structure
+```
+└── src
+    ├── books
+    │   ├── __init__.py
+    │   ├── routes.py
+    │   ├── schemas.py
+    │   └── service.py
+    ├── config.py
+    ├── db
+    │   ├── __init__.py
+    │   ├── main.py
+    │   ├── models.py
+    │   └── redis.py
+    ├── email.py
+    ├── errors.py
+    ├── __init__.py
+    ├── middleware.py
+    ├── myTyping.py
+    ├── reviews
+    │   ├── __init__.py
+    │   ├── routes.py
+    │   ├── schemas.py
+    │   └── service.py
+    ├── tags
+    │   ├── __init__.py
+    │   ├── routes.py
+    │   ├── schemas.py
+    │   └── service.py
+    ├── templates
+    └── users
+        ├── dependency.py
+        ├── __init__.py
+        ├── routes.py
+        ├── schemas.py
+        ├── service.py
+        └── utils.py
+```
 
 ## Contributors 👨‍💻
 - ### **[Ukasha Anwer @ Cyxabima](https://github.com/cyxabima)** - Developer & Maintainer  

@@ -1,0 +1,603 @@
+{
+	"info": {
+		"_postman_id": "91b333cc-7cfb-4401-b86b-238862394754",
+		"name": "Bookly",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42470222"
+	},
+	"item": [
+		{
+			"name": "Book",
+			"item": [
+				{
+					"name": "books",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoidWthc2hhYW53ZXJhbGlAZ21haWwuY29tIiwidXNlcl91aWQiOiI4NDliNWU3OC1lMmU2LTRhOTItOGY0ZC03MWRhYTEzMjgzMzIifSwiZXhwIjoxNzQyMDU1NzAyLCJqdGkiOiIxYWE0ZjdiYi01OTdhLTRhYzItYjYwZS0zOGYzYzQ0OGFiNjAiLCJyZWZyZXNoIjpmYWxzZX0.7fB4xB9VmbXq7AzP4pdzi_L4XcJSyd7Hoi7laWdZzPI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoiam9obmRvZUBleGFtcGxlLmNvbSIsInVzZXJfdWlkIjoiY2JhYWYyZTItNjk1Yy00ZmJmLTkyYmItNjM1ZDYxZjc4MDBiIn0sImV4cCI6MTc0MTcwMjA2OCwianRpIjoiMmU2NDBlMzAtMDY0MC00ZWNkLThlZWMtNDUxYTMwYWYzOGYwIiwicmVmcmVzaCI6ZmFsc2V9.fM8SFuq4K_Q8vCHnwnPvkeGJnD2fHZipPol7uXre2pc",
+								"description": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoiam9obmRvZUBleGFtcGxlLmNvbSIsInVzZXJfdWlkIjoiY2JhYWYyZTItNjk1Yy00ZmJmLTkyYmItNjM1ZDYxZjc4MDBiIn0sImV4cCI6MTc0MTcwMjA2OCwianRpIjoiMmU2NDBlMzAtMDY0MC00ZWNkLThlZWMtNDUxYTMwYWYzOGYwIiwicmVmcmVzaCI6ZmFsc2V9.fM8SFuq4K_Q8vCHnwnPvkeGJnD2fHZipPol7uXre2pc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{bookly}}/books",
+							"host": [
+								"{{bookly}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "one book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoidWthc2hhYW53ZXJhbGlAZ21haWwuY29tIiwidXNlcl91aWQiOiI4NDliNWU3OC1lMmU2LTRhOTItOGY0ZC03MWRhYTEzMjgzMzIifSwiZXhwIjoxNzQyMjA5MjI5LCJqdGkiOiJjMGU0Yjk5Zi05NGU1LTQ1NDktOWU0My1mYjY4Yjk4ZmY2NWQiLCJyZWZyZXNoIjpmYWxzZX0._b8ZBOc-P-ocRO7pM9aY6An3j9vauSBfsxVeHEusN3U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{bookly}}/books/e7dfec0f-3e73-40ce-ae23-cd1aa10ee6bd",
+							"host": [
+								"{{bookly}}"
+							],
+							"path": [
+								"books",
+								"e7dfec0f-3e73-40ce-ae23-cd1aa10ee6bd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete book",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{bookly}}/books/650025f7-01f0-4538-99d9-058706595668",
+							"host": [
+								"{{bookly}}"
+							],
+							"path": [
+								"books",
+								"650025f7-01f0-4538-99d9-058706595668"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoiam9obmRvZUBleGFtcGxlLmNvbSIsInVzZXJfdWlkIjoiY2JhYWYyZTItNjk1Yy00ZmJmLTkyYmItNjM1ZDYxZjc4MDBiIn0sImV4cCI6MTc0MTk2NzgwMCwianRpIjoiOTIyNGFmNTAtMzE0NS00MmEzLWEyNGItMWUxY2E1NGFlNDIxIiwicmVmcmVzaCI6ZmFsc2V9.mDwi1l77jembXet978uR0mJ-vbTkmqZDduqxOoHwBI8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n        \"title\": \"ITC\",\n        \"author\": \"GuTtag\",\n        \"publisher\": \"NED\",\n        \"published_date\": \"2004-05-03\",\n        \"page_count\": 176,\n        \"language\": \"English\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookly}}/books",
+							"host": [
+								"{{bookly}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoiam9obmRvZUBleGFtcGxlLmNvbSIsInVzZXJfdWlkIjoiY2JhYWYyZTItNjk1Yy00ZmJmLTkyYmItNjM1ZDYxZjc4MDBiIn0sImV4cCI6MTc0MTcwMjA2OCwianRpIjoiMmU2NDBlMzAtMDY0MC00ZWNkLThlZWMtNDUxYTMwYWYzOGYwIiwicmVmcmVzaCI6ZmFsc2V9.fM8SFuq4K_Q8vCHnwnPvkeGJnD2fHZipPol7uXre2pc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n        \"title\": \"Operating data Concepts\",\n        \"author\": \"Abraham Silberschatz, Peter B. Galvin, Greg Gagne\",\n        \"publisher\": \"Wiley\",\n        \"published_date\": \"1983-05-03\",\n        \"page_count\": 976,\n        \"language\": \"English\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookly}}/books/650025f7-01f0-4538-99d9-058706595668",
+							"host": [
+								"{{bookly}}"
+							],
+							"path": [
+								"books",
+								"650025f7-01f0-4538-99d9-058706595668"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_name\": \"Ukasha\",\n    \"email\": \"ukashaanwerali@gmail.com\",\n    \"first_name\": \"Ukasha\",\n    \"last_name\": \"Anwer\",\n    \"password\": \"12345678\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookly}}/auth/signup",
+							"host": [
+								"{{bookly}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_name\": \"john_doe\",\n    \"email\": \"ukashaanwerali@gmail.com\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"password\": \"123Ukasha@\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookly}}/auth/login",
+							"host": [
+								"{{bookly}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh-token",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoiam9obmRvZUBleGFtcGxlLmNvbSIsInVzZXJfdWlkIjoiY2JhYWYyZTItNjk1Yy00ZmJmLTkyYmItNjM1ZDYxZjc4MDBiIn0sImV4cCI6MTc0MTk2NzgwMCwianRpIjoiOTIyNGFmNTAtMzE0NS00MmEzLWEyNGItMWUxY2E1NGFlNDIxIiwicmVmcmVzaCI6ZmFsc2V9.mDwi1l77jembXet978uR0mJ-vbTkmqZDduqxOoHwBI8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_name\": \"john_doe\",\n    \"email\": \"johndoe@example.com\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"password\": \"securePass1\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookly}}/auth/refresh_token",
+							"host": [
+								"{{bookly}}"
+							],
+							"path": [
+								"auth",
+								"refresh_token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoiam9obmRvZUBleGFtcGxlLmNvbSIsInVzZXJfdWlkIjoiY2JhYWYyZTItNjk1Yy00ZmJmLTkyYmItNjM1ZDYxZjc4MDBiIn0sImV4cCI6MTc0MTc4MzIxNCwianRpIjoiNmNlZmNiNmQtNTJiZC00YTU1LWIzODctYTZmMGE2ZmUyYTFiIiwicmVmcmVzaCI6ZmFsc2V9.KYJYIlh06JcfgYmOlWsD-viDm1M2kVx7u0uD9uKUms0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": [\n        \"cyxabima@gmail.com\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookly}}/auth/send_email",
+							"host": [
+								"{{bookly}}"
+							],
+							"path": [
+								"auth",
+								"send_email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoiam9obmRvZUBleGFtcGxlLmNvbSIsInVzZXJfdWlkIjoiY2JhYWYyZTItNjk1Yy00ZmJmLTkyYmItNjM1ZDYxZjc4MDBiIn0sImV4cCI6MTc0MTk2NzgwMCwianRpIjoiOTIyNGFmNTAtMzE0NS00MmEzLWEyNGItMWUxY2E1NGFlNDIxIiwicmVmcmVzaCI6ZmFsc2V9.mDwi1l77jembXet978uR0mJ-vbTkmqZDduqxOoHwBI8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_name\": \"john_doe\",\n    \"email\": \"johndoe@example.com\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"password\": \"securePass1\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookly}}/auth/me",
+							"host": [
+								"{{bookly}}"
+							],
+							"path": [
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findUserByEmail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoiam9obmRvZUBleGFtcGxlLmNvbSIsInVzZXJfdWlkIjoiY2JhYWYyZTItNjk1Yy00ZmJmLTkyYmItNjM1ZDYxZjc4MDBiIn0sImV4cCI6MTc0MTg2MDYzMCwianRpIjoiZWM4YjdhOTUtMzc2MC00MDRlLWJhN2MtMWY2NmRjMWM2Mzk2IiwicmVmcmVzaCI6ZmFsc2V9.a49Lrfe9-xfUJrgj0jKNLMZiDxn68JLqMLQ3McGmQ8s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookly}}/auth/johndoexx@example.com",
+							"host": [
+								"{{bookly}}"
+							],
+							"path": [
+								"auth",
+								"johndoexx@example.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset-password-email",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"new_password\": \"123Ukasha@\",\n    \"confirm_password\": \"123Ukasha@\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/auth/reset-password/eyJlbWFpbCI6InVrYXNoYWFud2VyYWxpQGdtYWlsLmNvbSJ9.Z9VSDA.NL5Aq57NEftBKMAUBrUwamJyd_Q",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"reset-password",
+								"eyJlbWFpbCI6InVrYXNoYWFud2VyYWxpQGdtYWlsLmNvbSJ9.Z9VSDA.NL5Aq57NEftBKMAUBrUwamJyd_Q"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Review",
+			"item": [
+				{
+					"name": "review book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoidWthc2hhYW53ZXJhbGlAZ21haWwuY29tIiwidXNlcl91aWQiOiI4NDliNWU3OC1lMmU2LTRhOTItOGY0ZC03MWRhYTEzMjgzMzIifSwiZXhwIjoxNzQyMDU1NzAyLCJqdGkiOiIxYWE0ZjdiYi01OTdhLTRhYzItYjYwZS0zOGYzYzQ0OGFiNjAiLCJyZWZyZXNoIjpmYWxzZX0.7fB4xB9VmbXq7AzP4pdzi_L4XcJSyd7Hoi7laWdZzPI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rating\": 4,\n    \"review\": \"loved it !\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookly}}/review/book/e7dfec0f-3e73-40ce-ae23-cd1aa10ee6bd",
+							"host": [
+								"{{bookly}}"
+							],
+							"path": [
+								"review",
+								"book",
+								"e7dfec0f-3e73-40ce-ae23-cd1aa10ee6bd"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tags",
+			"item": [
+				{
+					"name": "Get all tags",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoidWthc2hhYW53ZXJhbGlAZ21haWwuY29tIiwidXNlcl91aWQiOiI4NDliNWU3OC1lMmU2LTRhOTItOGY0ZC03MWRhYTEzMjgzMzIifSwiZXhwIjoxNzQyMjg4OTY0LCJqdGkiOiJkYzkxMzNmNi0yMjc3LTRkNjMtOTBhNC1mYjcyZWZmYmRiYjciLCJyZWZyZXNoIjpmYWxzZX0.a0_CdZEwRDZT1bexZ3cacMtR30zbXZIMWxFKc-P5Me0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rating\": 3,\n    \"review\": \"still worth it !\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookly}}/tags",
+							"host": [
+								"{{bookly}}"
+							],
+							"path": [
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create tag",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoidWthc2hhYW53ZXJhbGlAZ21haWwuY29tIiwidXNlcl91aWQiOiI4NDliNWU3OC1lMmU2LTRhOTItOGY0ZC03MWRhYTEzMjgzMzIifSwiZXhwIjoxNzQyMjg4OTY0LCJqdGkiOiJkYzkxMzNmNi0yMjc3LTRkNjMtOTBhNC1mYjcyZWZmYmRiYjciLCJyZWZyZXNoIjpmYWxzZX0.a0_CdZEwRDZT1bexZ3cacMtR30zbXZIMWxFKc-P5Me0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"programming\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookly}}/tags",
+							"host": [
+								"{{bookly}}"
+							],
+							"path": [
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "attached tag to book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoidWthc2hhYW53ZXJhbGlAZ21haWwuY29tIiwidXNlcl91aWQiOiI4NDliNWU3OC1lMmU2LTRhOTItOGY0ZC03MWRhYTEzMjgzMzIifSwiZXhwIjoxNzQyMjg4OTY0LCJqdGkiOiJkYzkxMzNmNi0yMjc3LTRkNjMtOTBhNC1mYjcyZWZmYmRiYjciLCJyZWZyZXNoIjpmYWxzZX0.a0_CdZEwRDZT1bexZ3cacMtR30zbXZIMWxFKc-P5Me0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tags\": [\n        {\n            \"name\": \"programming\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bookly}}/tags/book/e7dfec0f-3e73-40ce-ae23-cd1aa10ee6bd/tags",
+							"host": [
+								"{{bookly}}"
+							],
+							"path": [
+								"tags",
+								"book",
+								"e7dfec0f-3e73-40ce-ae23-cd1aa10ee6bd",
+								"tags"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -16,7 +16,7 @@ access_token_bearer = AccessTokenBearer()
 role_checker = Depends(RoleChecker(["admin", "user"]))
 
 
-@book_router.get("/", response_model=List[Book], dependencies=[role_checker])
+@book_router.get("/", response_model=List[BookDetailsModel], dependencies=[role_checker])
 async def get_all_books(
     session: AsyncSession = Depends(get_db_session),
     user_details=Depends(access_token_bearer),

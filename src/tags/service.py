@@ -44,7 +44,7 @@ class TagService:
 
             tag = result.one_or_none()
             if not tag:
-                tag = Tag(**tag_data.model_dump())
+                raise TagNotFound()
 
             book.tags.append(tag)
 

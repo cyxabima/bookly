@@ -5,7 +5,7 @@ from sqlmodel.ext.asyncio.session import AsyncSession
 
 
 from src.users.dependency import RoleChecker
-from src.books.schemas import Book, BookDetailsModel
+from src.books.schemas import BookDetailsModel
 from src.db.main import get_db_session
 
 from .schemas import TagAddModel, TagCreateModel, TagModel
@@ -39,7 +39,9 @@ async def add_tag(
 
 
 @tags_router.post(
-    "/book/{book_uid}/tags", response_model=BookDetailsModel, dependencies=[user_role_checker]
+    "/book/{book_uid}/tags",
+    response_model=BookDetailsModel,
+    dependencies=[user_role_checker],
 )
 async def add_tags_to_book(
     book_uid: str,

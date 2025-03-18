@@ -1,0 +1,106 @@
+.
+├── alembic.ini
+├── env
+│   ├── bin
+│   │   ├── activate
+│   │   ├── activate.csh
+│   │   ├── activate.fish
+│   │   ├── Activate.ps1
+│   │   ├── alembic
+│   │   ├── dotenv
+│   │   ├── email_validator
+│   │   ├── fastapi
+│   │   ├── httpx
+│   │   ├── mako-render
+│   │   ├── markdown-it
+│   │   ├── pip
+│   │   ├── pip3
+│   │   ├── pip3.12
+│   │   ├── pygmentize
+│   │   ├── python -> python3
+│   │   ├── python3 -> /usr/bin/python3
+│   │   ├── python3.12 -> python3
+│   │   ├── typer
+│   │   ├── uvicorn
+│   │   ├── watchfiles
+│   │   └── websockets
+│   ├── include
+│   │   ├── python3.12
+│   │   └── site
+│   ├── lib
+│   │   └── python3.12
+│   ├── lib64 -> lib
+│   └── pyvenv.cfg
+├── migrations
+│   ├── env.py
+│   ├── __pycache__
+│   │   └── env.cpython-312.pyc
+│   ├── README
+│   ├── script.py.mako
+│   └── versions
+│       ├── 001d73ce9e4c_fixing_book_model.py
+│       ├── 1d7730bf8086_fixing_book_model_almost_done_but_time_.py
+│       ├── 1f3deed0da45_fixing_book_model.py
+│       ├── 289ca4b418cb_relationships_added_error_resolved.py
+│       ├── 315a56c4ce87_add_none_unique_user_id.py
+│       ├── 4189bec56da4_add_password.py
+│       ├── 4fc3d3c9e89d_fixing_book_model.py
+│       ├── 69f6bcb0cc0e_book_tag_and_tag_model.py
+│       ├── 810ef76a278a_relationships_added.py
+│       ├── a143a2ad6014_review_model_added.py
+│       ├── a21a7906985b_init.py
+│       ├── de5077195c6d_review_model_upgrade.py
+│       ├── df1b5e9f5f7b_add_role_field.py
+│       ├── e4d1acc019e2_add_role_field.py
+│       └── __pycache__
+├── project_structure.txt
+├── requirments.txt
+└── src
+    ├── books
+    │   ├── __init__.py
+    │   ├── __pycache__
+    │   ├── routes.py
+    │   ├── schemas.py
+    │   └── service.py
+    ├── config.py
+    ├── db
+    │   ├── __init__.py
+    │   ├── main.py
+    │   ├── models.py
+    │   ├── __pycache__
+    │   └── redis.py
+    ├── email.py
+    ├── errors.py
+    ├── __init__.py
+    ├── middleware.py
+    ├── myTyping.py
+    ├── __pycache__
+    │   ├── config.cpython-312.pyc
+    │   ├── email.cpython-312.pyc
+    │   ├── errors.cpython-312.pyc
+    │   ├── __init__.cpython-312.pyc
+    │   ├── middleware.cpython-312.pyc
+    │   └── myTyping.cpython-312.pyc
+    ├── reviews
+    │   ├── __init__.py
+    │   ├── __pycache__
+    │   ├── routes.py
+    │   ├── schemas.py
+    │   └── service.py
+    ├── tags
+    │   ├── __init__.py
+    │   ├── __pycache__
+    │   ├── routes.py
+    │   ├── schemas.py
+    │   └── service.py
+    ├── templates
+    └── users
+        ├── dependency.py
+        ├── __init__.py
+        ├── __pycache__
+        ├── routes.py
+        ├── schemas.py
+        ├── service.py
+        └── utils.py
+
+26 directories, 78 files
